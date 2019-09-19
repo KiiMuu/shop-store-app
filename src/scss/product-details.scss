@@ -1,0 +1,42 @@
+@import './vars';
+
+.product-details {
+    padding-top: $paddingBetweenSections;
+    padding-bottom: $paddingBetweenSections;
+    .products-heading {
+        h1 {
+            color: $mainColor;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: 3px;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: $marginAfterHeadDesc;
+        }
+    }
+    .product-info {
+        h3 {
+            color: $mainDark;
+            margin: 8px 0;
+        }
+        p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        form {
+            .uk-input {
+                border: none;
+                box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+                margin-bottom: 10px;
+            }
+            .uk-button-primary {
+                background: $mainColor;
+                color: $mainLight;
+                text-transform: uppercase;
+                cursor: pointer;
+                padding: 10px;
+            }
+        }
+    }
+}

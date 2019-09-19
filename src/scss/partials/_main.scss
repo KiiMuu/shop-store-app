@@ -1,0 +1,21 @@
+// style header
+
+.header {
+    h2 {
+        color: $mainColor;
+        font-weight: 900;
+        font-size: 65px;
+        margin-bottom: 0;
+    }
+    p {
+        color: #aaa;
+    }
+}
+
+@media ( max-width: 600px ) {
+    .header {
+        h2 {
+            font-size: 35px;
+        }
+    }
+}

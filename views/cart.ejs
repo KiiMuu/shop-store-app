@@ -1,0 +1,50 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<div class="cart">
+    <div class="uk-container">
+        <div class="cart-heading uk-text-center">
+            <h1 class="uk-text-uppercase">Cart</h1>
+            <p class="uk-text-muted">You've added  <%= items.length %> product/s to your cart</p>
+        </div>
+        <% if(items.length === 0) { %>
+            <div uk-alert>
+                <p>There are no items yet</p>
+            </div>
+        <% } else { %>
+            <div class="uk-overflow-auto">
+                <table class="uk-table uk-table-middle uk-table-divider uk-table-responsive">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Amount</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let i = 0; i < items.length; i++) { %>
+                            <tr>
+                                <td><%= i + 1 %></td>
+                                <td><%= items[i].name %></td>
+                                <td>$<%= items[i].price %></td>
+                                <form method="POST">
+                                    <td><input type="number" name="amount" class="uk-input" value="<%= items[i].amount %>"></td>
+                                    <td>$<%= items[i].price * items[i].amount %></td>
+                                    <td>
+                                        <input type="hidden" name="cartId" value="<%= items[i]._id %>">
+                                        <input type="submit" class="uk-button-primary" value="Save" formaction="/cart/save">
+                                        <input type="submit" class="uk-button-danger" value="Delete" formaction="/cart/delete">
+                                    </td>
+                                </form>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

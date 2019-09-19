@@ -1,0 +1,88 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<div class="add-product">
+    <div class="uk-container">
+        <div class="add-product-heading uk-text-center">
+            <h1 class="uk-text-uppercase">Add product</h1>
+            <p class="uk-text-muted">You've added product/s to your website</p>
+        </div>
+        <div class="uk-child-width-1-2@l" uk-grid>
+            <div>
+                <img class="uk-box-shadow-medium" src="../addPro.png" draggable="false" alt="Add" />
+            </div>
+            <div>
+                <form action="/admin/add" method="POST" enctype="multipart/form-data" class="uk-grid-small" uk-grid>
+                    <div class="uk-width-1-2@s">
+                        <input class="uk-input" type="text" name="name" placeholder="Product name">
+                        <% let nameError = validationErrors.find(err => err.param === 'name') %>
+                        <% if(nameError) { %>
+                            <div class="uk-alert-danger" uk-alert>
+                                <p><%= nameError.msg %></p>
+                            </div>
+                        <% } %>
+                    </div>
+                    <div class="uk-width-1-2@s">
+                        <input class="uk-input" type="number" name="price" placeholder="Enter product price">
+                        <% let priceError = validationErrors.find(err => err.param === 'price') %>
+                        <% if(priceError) { %>
+                            <div class="uk-alert-danger" uk-alert>
+                                <p><%= priceError.msg %></p>
+                            </div>
+                        <% } %>
+                    </div>
+                    <div class="uk-width-1-1">
+                        <textarea class="uk-textarea" type="text" name="description" placeholder="Enter product Description..."></textarea>
+                        <% let descriptionError = validationErrors.find(err => err.param === 'description') %>
+                        <% if(descriptionError) { %>
+                            <div class="uk-alert-danger" uk-alert>
+                                <p><%= descriptionError.msg %></p>
+                            </div>
+                        <% } %>
+                    </div>
+                    <div class="uk-width-1-1">
+                        <div>
+                            <div uk-form-custom="target: > * > span:first-child">
+                                <select name="category">
+                                    <option value="">Choose a category...</option>
+                                    <option value="clothes">Clothes</option>
+                                    <option value="phones">Phones</option>
+                                    <option value="computers">Computers</option>
+                                </select>
+                                <button class="uk-button" type="button" tabindex="-1">
+                                    <span></span>
+                                    <span uk-icon="icon: chevron-down"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <% let categoryError = validationErrors.find(err => err.param === 'category') %>
+                        <% if(categoryError) { %>
+                            <div class="uk-alert-danger" uk-alert>
+                                <p><%= categoryError.msg %></p>
+                            </div>
+                        <% } %>
+                    </div>
+                    <div class="uk-width-1-1">
+                        <div>
+                            <div uk-form-custom>
+                                <input type="file" name="image">
+                                <button class="uk-button" type="button" tabindex="-1">Select image</button>
+                            </div>
+                        </div>
+                        <% let imageError = validationErrors.find(err => err.param === 'image') %>
+                        <% if(imageError) { %>
+                            <div class="uk-alert-danger" uk-alert>
+                                <p><%= imageError.msg %></p>
+                            </div>
+                        <% } %>
+                    </div>
+                    <div>
+                        <input class="uk-button" type="submit" value="Add" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

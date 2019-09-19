@@ -1,0 +1,30 @@
+// start navbar style
+
+.navbar {
+    background: $mainColor;
+    .navbar-content {
+        .uk-logo {
+            color: $mainLight;
+        }
+        li {
+            a {
+                color: $mainLight;
+            }
+        }
+        .open-btn {
+            border: none;
+            color: $mainLight;
+        }
+        .uk-offcanvas-bar {
+            background: $mainColor;
+            li {
+                padding: 8px 0;
+                a {
+                    &:hover {
+                        color: $mainLight;
+                    }
+                }
+            }
+        }
+    }
+}

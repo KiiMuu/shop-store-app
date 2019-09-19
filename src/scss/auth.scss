@@ -1,0 +1,37 @@
+@import './vars';
+
+.login, .signup {
+    padding-top: $paddingBetweenSections;
+    padding-bottom: $paddingBetweenSections;
+    .login-heading, .signup-heading {
+        h1 {
+            color: $mainColor;
+            font-weight: 900;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+        }
+    }
+    .uk-input {
+        border: none;
+        background: #FFF;
+        height: 50px;
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, .1);
+        padding-left: 15px;
+    }
+    .uk-button {
+        background: $mainColor;
+        color: $mainLight;
+        margin-bottom: 10px;
+    }
+    a {
+        text-transform: uppercase;
+        color: $mainColor;
+        text-decoration: none;
+        &:hover {
+            color: $mainColor;
+        }
+    }
+    .uk-button-text::before {
+        border-bottom: 1px solid $mainColor;
+    }
+}

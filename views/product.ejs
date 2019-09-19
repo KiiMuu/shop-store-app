@@ -1,0 +1,37 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<div class="product-details">
+    <div class="uk-container">
+        <div class="products-heading uk-text-center">
+            <h1 class="uk-text-uppercase">Product Details</h1>
+            <p class="uk-text-muted">Some details of <span class="uk-text-lowercase"><%= product.name%></span> product</p>
+        </div>
+        <% if(!product) { %>
+            <div uk-alert>
+                <p>The product details not found</p>
+            </div>
+        <% } else { %>
+            <div class="uk-grid-small uk-child-width-1-1@s uk-child-width-1-2@m" uk-grid>
+                <div class="product-img">
+                    <img src="/<%= product.image%>" alt="Product">
+                </div>
+                <div class="product-info">
+                    <h3 class="uk-text-uppercase"><%= product.name%></h3>
+                    <span>Price: <%= product.price%></span>
+                    <p><%= product.description%></p>
+                    <form action="/cart" method="POST">
+                        <input type="number" name="amount" class="uk-input" placeholder="Enter amount" />
+                        <input type="hidden" name="name" class="uk-input" value="<%= product.name%>">
+                        <input type="hidden" name="price" class="uk-input" value="<%= product.price%>">
+                        <input type="hidden" name="productId" class="uk-input" value="<%= product._id%>">
+                        <input type="hidden" name="redirectTo" class="uk-input" value="/product/:<%= product._id%>">
+                        <input type="submit" value="Add to cart" class="uk-button-primary" />
+                    </form>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

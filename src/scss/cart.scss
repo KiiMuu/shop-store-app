@@ -1,0 +1,46 @@
+// start cart style 
+.cart {
+    padding-top: $paddingBetweenSections;
+    padding-bottom: $paddingBetweenSections;
+    .cart-heading {
+        h1 {
+            color: $mainColor;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: 3px;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: $marginAfterHeadDesc;
+        }
+    }
+    table {
+        thead {
+            th {
+                color: $mainColor;
+            }
+        }
+        .uk-input {
+            border: none;
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        input[type="submit"] {
+            text-transform: uppercase;
+            cursor: pointer;
+            padding: 5px 10px;
+            color: $mainLight;
+        }
+        .uk-button-primary {
+            background: $mainColor;
+            color: $mainLight;
+        }
+    }
+}
+
+@media (max-width: 960px) {
+    tbody {
+        tr {
+            margin-bottom: 30px !important;
+        }
+    }
+}

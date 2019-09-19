@@ -1,0 +1,90 @@
+@import './vars';
+@import './partials/navbar';
+@import './partials/main';
+@import './product-details.scss';
+@import './auth.scss';
+@import './add-product.scss';
+@import './partials/footer';
+
+@import './cart.scss';
+
+// style products section
+.products {
+    padding-top: $paddingBetweenSections;
+    padding-bottom: $paddingBetweenSections;
+    .products-heading {
+        h1 {
+            color: $mainColor;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: 3px;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: $marginAfterHeadDesc;
+        }
+    }
+    form {
+        .uk-checkbox:checked, .uk-checkbox:indeterminate, .uk-radio:checked {
+            background: $mainColor;
+        }
+        .filter-btn {
+            background: $mainColor;
+            color: $mainLight;
+            margin-bottom: 20px;
+        }
+    }
+    .product-item {
+        .uk-card-body {
+            padding: 20px;
+            .uk-card-title {
+                a {
+                    text-decoration: none;
+                    color: $mainDark;
+                }
+                p {
+                    margin: 10px 0;
+                    font-size: 16px;
+                }
+            }
+            form {
+                .uk-input {
+                    border: none;
+                    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+                    height: 35px;
+                    margin-bottom: 10px;
+                }
+                .addToCart {
+                    background: $mainColor;
+                    color: $mainLight;
+                    border: none;
+                    padding: 5px 10px;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    outline: none;
+                }
+            }
+        }
+        .uk-card-footer {
+            padding-left: 20px;
+            a {
+                color: $mainDark;
+            }
+        }
+    }
+}
+
+// not found page
+.not-found, .not-admin {
+    padding-top: 30px;
+    padding-bottom: $paddingBetweenSections;
+    p {
+        font-size: 50px;
+        color: $mainColor;
+        font-weight: 900;
+        margin-bottom: 5px;
+    }
+    img {
+        margin-top: 30px;
+    }
+}

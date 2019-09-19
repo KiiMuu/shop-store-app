@@ -1,0 +1,50 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<div class="login">
+    <div class="uk-container">
+        <div class="login-heading uk-text-center">
+            <h1 class="uk-text-uppercase">Sign in</h1>
+        </div>
+        <% if(authError) { %>
+            <div class="uk-alert-danger" uk-alert>
+                <p><%= authError %></p>
+            </div>
+        <% } %>
+        <div class="uk-child-width-1-2@m" class="uk-grid-small" uk-grid>
+            <div>
+                <img class="uk-box-shadow-medium" src="login.png" alt="Login" draggable="false" />
+            </div>
+            <div>
+                <form action="/login" method="POST" class="uk-grid-small" uk-grid>
+                    <div class="uk-width-1-2@s">
+                        <input class="uk-input" type="email" name="email" placeholder="Email">
+                        <% let emailError = validationErrors.find(err => err.param === 'email') %>
+                        <% if(emailError) { %>
+                            <div class="uk-alert-danger" uk-alert>
+                                <p><%= emailError.msg %></p>
+                            </div>
+                        <% } %>
+                    </div>
+                    <div class="uk-width-1-2@s">
+                        <input class="uk-input" type="password" name="password" placeholder="Password">
+                        <% let passwordError = validationErrors.find(err => err.param === 'password') %>
+                        <% if(passwordError) { %>
+                            <div class="uk-alert-danger" uk-alert>
+                                <p><%= passwordError.msg %></p>
+                            </div>
+                        <% } %>
+                    </div>
+                    <div>
+                        <input class="uk-button" type="submit" value="Sign in" />
+                    </div>
+                    <div class="uk-width-1-1">
+                        <p>haven't an account? <a href="/signup" class="uk-text-buttonuk-button uk-button-text">Sign up</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

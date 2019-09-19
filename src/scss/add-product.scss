@@ -1,0 +1,33 @@
+.add-product {
+    padding-top: $paddingBetweenSections;
+    padding-bottom: $paddingBetweenSections;
+    .add-product-heading {
+        h1 {
+            color: $mainColor;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: 3px;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: $marginAfterHeadDesc;
+        }
+    }
+    .uk-input, .uk-textarea {
+        border: none;
+        background: #FFF;
+        height: 50px;
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, .1);
+        padding-left: 15px;
+    }
+    .uk-textarea {
+        resize: none;
+        height: 150px;
+        padding-top: 15px;
+    }
+    .uk-button {
+        background: $mainColor;
+        color: $mainLight;
+        margin-bottom: 10px;
+    }
+}

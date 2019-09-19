@@ -1,0 +1,63 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+<%- include('partials/main.ejs') %>
+
+<div class="products">
+    <div class="uk-container">
+        <div class="products-heading uk-text-center">
+            <h1 class="uk-text-uppercase">Products</h1>
+            <p class="uk-text-muted">Some of our recent products</p>
+        </div>
+        <!-- Filter options to filter products -->
+        <form action="/" method="GET">
+            <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                <label><input class="uk-radio" type="radio" name="category" value="all"> All</label>
+                <label><input class="uk-radio" type="radio" name="category" value="clothes"> Clothes</label>
+                <label><input class="uk-radio" type="radio" name="category" value="phones"> Phones</label>
+                <label><input class="uk-radio" type="radio" name="category" value="computers"> Computers</label>
+            </div>
+            <input type="submit" value="Filter" class="uk-button filter-btn" />
+        </form>
+        <% if(validationErrors) { %>
+            <div class="uk-alert-danger" uk-alert>
+                <p><%= validationErrors.msg %></p>
+            </div>
+        <% } %>
+        <% if(products.length === 0) { %>
+            <div uk-alert>
+                <p>There are no products yet</p>
+            </div>
+        <% } else { %>
+            <div class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-4@m" uk-grid>
+                <% for(let product of products) { %>
+                    <div class="product-item">
+                        <div class="uk-card uk-card-default">
+                            <div class="uk-card-media-top">
+                                <img src="<%= product.image%>" alt="Product">
+                            </div>
+                            <div class="uk-card-body">
+                                <h3 class="uk-card-title">
+                                    <a href="/product/<%= product._id%>"><%= product.name%></a>
+                                    <p class="uk-text-muted">Price: $<%= product.price%></p>
+                                </h3>
+                                <form action="/cart" method="POST">
+                                    <input type="number" name="amount" class="uk-input" placeholder="Enter amount" />
+                                    <input type="hidden" name="name" class="uk-input" value="<%= product.name%>">
+                                    <input type="hidden" name="price" class="uk-input" value="<%= product.price%>">
+                                    <input type="hidden" name="productId" class="uk-input" value="<%= product._id%>">
+                                    <input type="hidden" name="redirectTo" class="uk-input" value="/">
+                                    <input type="submit" value="Add" class="addToCart" />
+                                </form>
+                            </div>
+                            <div class="uk-card-footer">
+                                <a href="/product/<%= product._id%>" class="uk-button uk-button-text">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
